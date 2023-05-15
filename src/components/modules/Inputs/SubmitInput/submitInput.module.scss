@@ -1,0 +1,13 @@
+.submitInput {
+  padding: 10px 20px 10px 20px;
+  font-size: large;
+  font-weight: normal;
+  border: 2px solid;
+  border-radius: 12px;
+  transition-duration: 200ms;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

@@ -1,0 +1,9 @@
+$base-color: #bb2e2e;
+
+
+.authPageWrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: $base-color;
+}
