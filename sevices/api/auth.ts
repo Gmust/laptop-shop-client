@@ -7,7 +7,9 @@ export const signUpFx = createEffect(async ({ url, username, password, email }: 
   const { data } = await instance.post(url, { username, password, email });
   if (data.errorMsg) {
     toast.error(data.errorMsg);
-  }
+  }else (
+    toast.success('Successfully signed up!')
+  )
   return data;
 });
 

@@ -9,7 +9,6 @@ import {
 } from '@utils/constants';
 import classes from './signUp.module.scss';
 import { signUpFx } from '@/sevices/api/auth';
-import toast from 'react-hot-toast';
 
 interface ISignUpForm {
   email: string,
@@ -19,20 +18,31 @@ interface ISignUpForm {
 
 export const SignUp = () => {
 
+
   const { handleSubmit, register, formState: { errors }, reset } = useForm<ISignUpForm>({
     mode: 'onSubmit',
     criteriaMode: 'all'
   });
 
+
   const onSubmit = async (data: ISignUpForm) => {
     try {
-      const res = await signUpFx({
+      /*      await toast.promise(signUpFx({
+              url: '/users/signup',
+              password: data.password,
+              email: data.email,
+              username: data.username
+            }), {
+              loading: 'Signing up...',
+              error: '',
+              success: 'User successfully signed up!'
+            });*/
+      await signUpFx({
         url: '/users/signup',
         password: data.password,
         email: data.email,
         username: data.username
       });
-      toast.success('User successfully signed up!');
       reset();
     } catch (e: any) {
       console.log(e);

@@ -1,4 +1,5 @@
 'use client';
+
 import classes from './auth.module.scss';
 import { SignIn } from '@components/pages/Auth/SignIn/SignIn';
 import { SignUp } from '@components/pages/Auth/SignUp/SignUp';

@@ -1,0 +1,40 @@
+
+.header {
+  background-color: rgb(24, 24, 24);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: large;
+  padding: 10px;
+}
+
+.navbarStyle {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+
+  li {
+    margin-left: 30px;
+    transition-duration: 200ms;
+    border-bottom: 1px solid rgb(24, 24, 24);
+
+    .active {
+      border-bottom: 1px solid white;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+      border-bottom: 1px solid orange;
+    }
+  }
+
+  a {
+    color: orange;
+    text-decoration: none;
+  }
+
+}
+
+
+

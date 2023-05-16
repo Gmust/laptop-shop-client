@@ -1,6 +1,8 @@
-import { EffectorNext } from '@effector/next';
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import { Providers } from '@/app/Providers';
+import { Header } from '@components/elements/Header/Header';
+import { SearchBar } from '@components/elements/SearchBar/SearchBar';
 
 export const metadata = {
   title: 'Laptop shop',
@@ -19,13 +21,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
     <body>
-    <EffectorNext>
+    <Providers>
       <Toaster
-        position="bottom-left"
+        position='bottom-left'
         reverseOrder={true}
       />
-      {children}
-    </EffectorNext>
+      <Header />
+      <SearchBar/>
+        {children}
+    </Providers>
     </body>
     </html>
   );

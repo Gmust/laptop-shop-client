@@ -1,9 +1,11 @@
-import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';
 import { AuthInput, SubmitInput } from '@components/modules/Inputs';
 import { signInFx } from '@/sevices/api/auth';
 import { PATTERN_MESSAGE_USERNAME, REQUIRED_MESSAGE } from '@utils/constants';
 import classes from './signIn.module.scss';
+
 
 interface ISignInForm {
   username: string,
@@ -12,6 +14,8 @@ interface ISignInForm {
 
 export const SignIn = () => {
 
+  const router = useRouter();
+
   const { handleSubmit, register, formState: { errors }, reset } = useForm<ISignInForm>({
     mode: 'onSubmit',
     criteriaMode: 'all'
@@ -19,15 +23,18 @@ export const SignIn = () => {
 
   const onSubmit = async (data: ISignInForm) => {
     try {
-      const res = await signInFx({
+      await toast.promise(signInFx({
         url: '/users/login',
         password: data.password,
         username: data.username
+      }), {
+        loading: 'Signing in...',
+        error: 'Invalid username or password',
+        success: 'User successfully signed in!'
       });
-      toast.success('User successfully signed up!');
       reset();
+      router.push('/')
     } catch (e: any) {
-      toast.error(e.response.data.message);
     }
   };
 

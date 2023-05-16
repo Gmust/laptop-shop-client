@@ -1,0 +1,45 @@
+.profile {
+  position: relative;
+  border: none;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  color: black;
+}
+
+.profileBtn {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+.profileDropdown {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  margin: 0;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+
+  .userInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logout {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    border: none;
+
+    .text{
+      margin-right: 5px;
+    }
+  }
+}
+
