@@ -1,7 +1,21 @@
+import Image from 'next/image';
+import classes from './searchBar.module.scss';
+import { SearchInput } from '@components/modules/Inputs/SearchInput/SearchInput';
+import ShoppingCartPopUp from '@components/elements/SearchBar/shoppingCart/ShoppingCartPopUp';
+
 export const SearchBar = () => {
   return (
-    <div style={{background: 'wheat', height: '60px'}}>
-      Header
+    <div className={classes.searchBarWrapper}>
+
+      <div className={classes.logoBlock}>
+        <Image src={'/img/logo.svg'} alt={'logo'} width={60} height={60} />
+        <h1>Shoptop</h1>
+      </div>
+
+      <SearchInput />
+
+      <ShoppingCartPopUp />
+
     </div>
   );
 };

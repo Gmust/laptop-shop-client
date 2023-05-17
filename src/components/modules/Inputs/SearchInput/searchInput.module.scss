@@ -1,0 +1,22 @@
+.searchInput {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 40%;
+  cursor: pointer;
+
+  .imgStyle {
+    position: absolute;
+    right: 10px;
+  }
+
+  .inputStyle {
+    width: 100%;
+    padding-right: 40px;
+    padding: 5px;
+    border-radius: 6px;
+    border: 2px solid black;
+    font-size: large;
+  }
+}
+

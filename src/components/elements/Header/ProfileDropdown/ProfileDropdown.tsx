@@ -15,7 +15,7 @@ const ProfileDropdown = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, s
     <div className={classes.profile} ref={ref}>
       <button className={classes.profileBtn} onClick={toggleProfileDropdown}>
         <span>
-          <CgProfile color='white' size='2em' />
+          <CgProfile color='white' size='2.5em' />
         </span>
       </button>
 
@@ -28,12 +28,12 @@ const ProfileDropdown = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, s
                      style={{ transformOrigin: 'right top' }}
           >
             <li className={classes.userInfo}>
-              <span>User</span>
-              <span>Useremail</span>
+              <span className={classes.username}>User</span>
+              <span className={classes.email}>Useremail@gmail.com</span>
             </li>
             <hr />
-            <li>
-              <button className={classes.logout}>
+            <li className={classes.logout}>
+              <button>
                 <span className={classes.text}>Log out</span>
                 <span><SlLogout color='black' size='1.2em' /></span>
               </button>

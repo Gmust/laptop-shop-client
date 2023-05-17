@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { Providers } from '@/app/Providers';
 import { Header } from '@components/elements/Header/Header';
 import { SearchBar } from '@components/elements/SearchBar/SearchBar';
+import { Footer } from '@components/elements/Footer/Footer';
 
 export const metadata = {
   title: 'Laptop shop',
@@ -27,8 +28,9 @@ export default function RootLayout({
         reverseOrder={true}
       />
       <Header />
-      <SearchBar/>
-        {children}
+      <SearchBar />
+      {children}
+      <Footer />
     </Providers>
     </body>
     </html>
