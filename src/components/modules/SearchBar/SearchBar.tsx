@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import classes from './searchBar.module.scss';
-import { SearchInput } from '@components/modules/Inputs/SearchInput/SearchInput';
-import ShoppingCartPopUp from '@components/elements/SearchBar/shoppingCart/ShoppingCartPopUp';
+import { SearchInput } from '@components/elements/Inputs/SearchInput/SearchInput';
+import ShoppingCartPopUp from '@components/modules/SearchBar/shoppingCart/ShoppingCartPopUp';
 
 export const SearchBar = () => {
   return (

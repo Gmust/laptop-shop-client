@@ -1,4 +1,8 @@
 
 .mainPageWrapper {
-  z-index: 2;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
 }

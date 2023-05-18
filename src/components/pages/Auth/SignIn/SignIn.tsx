@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { AuthInput, SubmitInput } from '@components/modules/Inputs';
+import { AuthInput, SubmitInput } from '@components/elements/Inputs';
 import { signInFx } from '@/sevices/api/auth';
 import { PATTERN_MESSAGE_USERNAME, REQUIRED_MESSAGE } from '@utils/constants';
 import classes from './signIn.module.scss';

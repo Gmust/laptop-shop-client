@@ -1,9 +1,9 @@
 import './globals.css';
 import { Toaster } from 'react-hot-toast';
 import { Providers } from '@/app/Providers';
-import { Header } from '@components/elements/Header/Header';
-import { SearchBar } from '@components/elements/SearchBar/SearchBar';
-import { Footer } from '@components/elements/Footer/Footer';
+import { Header } from '@components/modules/Header/Header';
+import { SearchBar } from '@components/modules/SearchBar/SearchBar';
+import { Footer } from '@components/modules/Footer/Footer';
 
 export const metadata = {
   title: 'Laptop shop',

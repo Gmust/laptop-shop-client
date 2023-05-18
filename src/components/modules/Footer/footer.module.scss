@@ -1,0 +1,107 @@
+
+.footer {
+  background: rgb(24, 24, 24);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+}
+
+.footerTop {
+  margin-top: 30px;
+  display: flex;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: space-between;
+
+  a {
+    color: #9b9999;
+  }
+
+  a:hover {
+    color: orange;
+  }
+
+}
+
+
+.rights {
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  user-select: none;
+}
+
+.footerList {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.divider {
+  border-left: 3px solid gray;
+  margin-right: 3px;
+  border-radius: 20px;
+  opacity: 0.4;
+}
+
+.list {
+
+  ul {
+    list-style-type: none;
+  }
+
+  h3 {
+    margin-left: 3px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  li {
+    font-size: 14px;
+    padding: 3px;
+  }
+}
+
+.footerBottom {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    display: flex;
+
+    li {
+      padding: 5px;
+    }
+  }
+}
+
+.paymentMethods {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socials {
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.horizontalDivider {
+  border-bottom: 3px solid gray;
+  border-radius: 20px;
+  margin-left: 5px;
+  margin-right: 5px;
+  opacity: 0.4;
+}

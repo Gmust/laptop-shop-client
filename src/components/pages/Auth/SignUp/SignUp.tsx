@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { AuthInput, SubmitInput } from '@components/modules/Inputs';
+import { AuthInput, SubmitInput } from '@components/elements/Inputs';
 import {
   MIN_LENGTH,
   PATTERN_MESSAGE_EMAIL,

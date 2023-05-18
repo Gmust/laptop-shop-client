@@ -8,7 +8,7 @@ import {
   inputStyles,
   menuStyles,
   optionStyles
-} from '@components/modules/Inputs/SearchInput/inputStyle';
+} from '@components/elements/Inputs/SearchInput/inputStyle';
 
 export const SearchInput = () => {
 

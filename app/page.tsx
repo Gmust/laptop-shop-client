@@ -1,9 +1,14 @@
-import classes from './main.module.scss'
+import { MainPage } from '@components/pages/MainPage/MainPage';
+import { getLaptopsFx } from '@/context/laptops';
 
-const Home = () => {
+const Home = async () => {
+
+  const data = await getLaptopsFx({});
+
+
   return (
-    <div className={classes.mainWrapper}>
-      Main
+    <div>
+      <MainPage {...data} />
     </div>
   );
 };
