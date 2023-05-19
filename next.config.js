@@ -6,7 +6,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')]
   },
   images: {
-    domains: [`${process.env.NEXT_PUBLIC_SERVER_URL}`]
+    domains: [`${process.env.NEXT_PUBLIC_SERVER_URL}`, 'loremflickr.com']
   },
   reactStrictMode: true
 };

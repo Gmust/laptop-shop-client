@@ -5,7 +5,7 @@ interface ILaptopsResponse {
 
 interface ILaptopsRequest {
   offset?: number,
-  limit?: number
+  limit?: number,
 }
 
 interface ILaptop {
@@ -24,7 +24,3 @@ interface ILaptop {
 }
 
 
-interface IManufacturer {
-  name: string,
-  icon: string
-}

@@ -11,66 +11,66 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
 }
 
 
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
-  content: none;
+    content: '';
+    content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 
 @font-face {
-  font-display: swap;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 700;
-  src: url(../public/fonts/Raleway-Bold.woff) format("woff");
+    font-display: swap;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 700;
+    src: url(../public/fonts/Raleway-Bold.woff) format("woff");
 }
 
 @font-face {
-  font-display: swap;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  src: url(../public/fonts/Raleway-Medium.woff) format("woff");
+    font-display: swap;
+    font-family: Raleway;
+    font-style: normal;
+    font-weight: 500;
+    src: url(../public/fonts/Raleway-Medium.woff) format("woff");
 }
 
 @font-face {
-  font-display: swap;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  src: url(../public/fonts/Roboto-Medium.woff) format("woff");
+    font-display: swap;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    src: url(../public/fonts/Roboto-Medium.woff) format("woff");
 }
 
 @font-face {
-  font-display: swap;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 400;
-  src: url(../public/fonts/Roboto-Regular.woff) format("woff");
+    font-display: swap;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    src: url(../public/fonts/Roboto-Regular.woff) format("woff");
 }
 
 
 body {
-  font-family: Roboto, sans-serif;
+    font-family: Roboto, sans-serif;
 }

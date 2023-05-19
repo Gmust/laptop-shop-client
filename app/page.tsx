@@ -1,14 +1,17 @@
 import { MainPage } from '@components/pages/MainPage/MainPage';
-import { getLaptopsFx } from '@/context/laptops';
+import { getAllLaptopsFx } from '@/context/laptops';
+import { getLaptopsBy } from '@/sevices/api/laptops';
 
 const Home = async () => {
 
-  const data = await getLaptopsFx({});
-
+  const allLaptops = await getAllLaptopsFx({});
+  const newLaptops = await getLaptopsBy({ url: '/new' });
+  const bestsellersLaptops = await getLaptopsBy({ url: '/bestSellers' });
 
   return (
     <div>
-      <MainPage {...data} />
+      <MainPage allLaptops={allLaptops.rows} bestsellersLaptops={bestsellersLaptops.rows}
+                newLaptops={bestsellersLaptops.rows} />
     </div>
   );
 };

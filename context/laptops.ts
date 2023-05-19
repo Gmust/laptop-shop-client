@@ -1,32 +1,46 @@
 import { createDomain } from 'effector';
-import { getLaptops } from '@/sevices/api/laptops';
+import { getAllLaptops, getLaptopsBy } from '@/sevices/api/laptops';
+import toast from 'react-hot-toast';
 
 const laptops = createDomain();
 
 
-export const getLaptopsFx = laptops.createEffect(async ({ limit, offset }: ILaptopsRequest) => {
-  const res = await getLaptops({ offset, limit });
+export const getAllLaptopsFx = laptops.createEffect(async ({ limit, offset }: ILaptopsRequest) => {
+  const res = await getAllLaptops({ offset, limit });
   setLaptops(res.rows);
   setAmount(res.count);
-  setManufacturers(res.rows);
+  return res;
 });
 
+export const getLaptopsByFx = laptops.createEffect(async ({ url }: { url: string }) => {
+  try {
+    const data = await getLaptopsBy({ url });
+    if (url === '/new') {
+      setNew(data.rows);
+    }
+    if (url === '/bestsellers') {
+      setBestsellers(data.rows);
+    }
+
+    return data;
+  } catch (e) {
+    toast.error((e as Error).message);
+  }
+});
 
 const setLaptops = laptops.createEvent<ILaptop[]>();
 const setAmount = laptops.createEvent<number>();
-const setManufacturers = laptops.createEvent<ILaptop[]>();
+const setNew = laptops.createEvent<ILaptop[]>();
+const setBestsellers = laptops.createEvent<ILaptop[]>();
 
-const $laptops = laptops.createStore<ILaptop[]>([] as ILaptop[])
+export const newLaptops = laptops.createStore<ILaptop[]>([])
+  .on(setNew, (_, state) => state);
+
+export const bestsellersLaptops = laptops.createStore<ILaptop[]>([])
+  .on(setBestsellers, (_, state) => state);
+
+export const $laptops = laptops.createStore<ILaptop[]>([] as ILaptop[])
   .on(setLaptops, (_, state) => state);
 
-const $goodsAmount = laptops.createStore<number>(0)
+export const $goodsAmount = laptops.createStore<number>(0)
   .on(setAmount, (_, state) => state);
-
-const $manufacturers = laptops.createStore<IManufacturer[]>([] as IManufacturer[])
-  .on(setManufacturers, (_, state) => {
-    const manufacturers = state.map((laptop) => ({
-      name: laptop.manufacturer,
-      icon: `Si${laptop.manufacturer}`
-    }));
-    return manufacturers;
-  });
