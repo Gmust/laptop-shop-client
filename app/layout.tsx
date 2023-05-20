@@ -4,6 +4,7 @@ import { Providers } from '@/app/Providers';
 import { Header } from '@components/modules/Header/Header';
 import { SearchBar } from '@components/modules/SearchBar/SearchBar';
 import { Footer } from '@components/modules/Footer/Footer';
+import { EffectorNext } from '@effector/next';
 
 export const metadata = {
   title: 'Laptop shop',
@@ -19,18 +20,21 @@ export default function RootLayout({
                                    }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang='en'>
     <body>
     <Providers>
-      <Toaster
-        position='bottom-left'
-        reverseOrder={true}
-      />
-      <Header />
-      <SearchBar />
-      {children}
-      <Footer />
+      <EffectorNext>
+        <Toaster
+          position='bottom-left'
+          reverseOrder={true}
+        />
+        <Header />
+        <SearchBar />
+        {children}
+        <Footer />
+      </EffectorNext>
     </Providers>
     </body>
     </html>

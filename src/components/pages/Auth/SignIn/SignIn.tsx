@@ -33,7 +33,8 @@ export const SignIn = () => {
         success: 'User successfully signed in!'
       });
       reset();
-      router.push('/')
+      router.push('/');
+      router.refresh();
     } catch (e: any) {
     }
   };

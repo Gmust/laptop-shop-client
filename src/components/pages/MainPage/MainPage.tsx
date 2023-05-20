@@ -10,13 +10,14 @@ interface MainPageProps {
 }
 
 export const MainPage = ({ allLaptops, bestsellersLaptops, newLaptops }: MainPageProps) => {
+
   return (
     <>
       <BrandsSlider />
       <div className={classes.mainPageWrapper}>
         <div>
           <h2>Our Laptops</h2>
-
+          <div className={classes.divider}></div>
           <div>
             <h3>New laptops</h3>
             <div>
@@ -24,6 +25,7 @@ export const MainPage = ({ allLaptops, bestsellersLaptops, newLaptops }: MainPag
             </div>
           </div>
 
+          <div className={classes.divider}></div>
 
           <div>
             <h3>Bestsellers laptops</h3>
@@ -31,6 +33,8 @@ export const MainPage = ({ allLaptops, bestsellersLaptops, newLaptops }: MainPag
               <LaptopsSlider laptops={bestsellersLaptops} />
             </div>
           </div>
+
+          <div className={classes.divider}></div>
 
           <div>
             <h3>All Laptops</h3>

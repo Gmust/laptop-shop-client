@@ -1,5 +1,6 @@
-import classes from './laptopCard.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
+import classes from './laptopCard.module.scss';
 
 export const LaptopCard = (laptop: ILaptop) => {
 
@@ -7,12 +8,13 @@ export const LaptopCard = (laptop: ILaptop) => {
 
 
   return (
-    <div className={classes.cardWrapper}>
-      <Image src={img} alt={'image'} width={200} height={150} />
+    <Link href={'#'} className={classes.cardWrapper}>
+      <Image src={img} alt={'image'} width={250} height={180} style={{ 'borderRadius': '10px' }}
+             className={classes.image} />
       <h4>{laptop.name} {laptop.manufacturer}</h4>
-      <span>{laptop.vendor_code}</span>
-      <span>{laptop.price}</span>
-    </div>
+      <span className={classes.vendorCode}>Vendor code:{laptop.vendor_code}</span>
+      <span className={classes.price}>Price: {laptop.price}$</span>
+    </Link>
   );
 };
 

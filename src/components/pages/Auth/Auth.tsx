@@ -4,9 +4,11 @@ import classes from './auth.module.scss';
 import { SignIn } from '@components/pages/Auth/SignIn/SignIn';
 import { SignUp } from '@components/pages/Auth/SignUp/SignUp';
 import { useState } from 'react';
+import { useRedirectByUserCheck } from '@hooks/useRedirectByUserCheck';
 
 export const Auth = () => {
 
+  useRedirectByUserCheck();
   const [type, setType] = useState<'signIn' | 'signUp'>('signIn');
 
   return (

@@ -36,5 +36,9 @@
 
 }
 
-
+@media screen and (max-width < 800) {
+  .header{
+    display: none;
+  }
+}
 

@@ -6,11 +6,12 @@ import { SlLogout } from 'react-icons/sl';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IWrappedComponent, withClickOutside } from '@utils/functions';
 import classes from './profileDropdown.module.scss';
+import { $user } from '@/context/user';
 
 const ProfileDropdown = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, setOpen }, ref) => {
 
   const toggleProfileDropdown = () => setOpen(!open);
-
+  const user = $user.getState();
   return (
     <div className={classes.profile} ref={ref}>
       <button className={classes.profileBtn} onClick={toggleProfileDropdown}>
@@ -28,8 +29,8 @@ const ProfileDropdown = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, s
                      style={{ transformOrigin: 'right top' }}
           >
             <li className={classes.userInfo}>
-              <span className={classes.username}>User</span>
-              <span className={classes.email}>Useremail@gmail.com</span>
+              <span className={classes.username}>{user.username}</span>
+              <span className={classes.email}>{user.email}</span>
             </li>
             <hr />
             <li className={classes.logout}>
