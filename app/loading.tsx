@@ -3,7 +3,6 @@
 import { useRedirectByUserCheck } from '@hooks/useRedirectByUserCheck';
 
 const Loading = () => {
-  useRedirectByUserCheck();
 
   return (
     <div>

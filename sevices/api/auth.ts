@@ -36,3 +36,12 @@ export const checkUserAuthFx = createEffect(async (url: string) => {
     }
   }
 });
+
+export const logoutFx = createEffect(async (url: string) => {
+  try {
+    await instance.post(url);
+    toast.success('Successfully logged out!')
+  } catch (e) {
+    toast.error((e as Error).message);
+  }
+});
