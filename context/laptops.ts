@@ -28,10 +28,10 @@ export const getLaptopsByFx = laptops.createEffect(async ({ url }: { url: string
   }
 });
 
-const setLaptops = laptops.createEvent<ILaptop[]>();
-const setAmount = laptops.createEvent<number>();
-const setNew = laptops.createEvent<ILaptop[]>();
-const setBestsellers = laptops.createEvent<ILaptop[]>();
+export const setLaptops = laptops.createEvent<ILaptop[]>();
+export const setAmount = laptops.createEvent<number>();
+export const setNew = laptops.createEvent<ILaptop[]>();
+export const setBestsellers = laptops.createEvent<ILaptop[]>();
 
 export const newLaptops = laptops.createStore<ILaptop[]>([])
   .on(setNew, (_, state) => state);

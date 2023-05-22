@@ -17,7 +17,6 @@ export const Header = () => {
   const user = $user.getState();
 
 
-
   return (
     <header className={classes.header}>
 
@@ -31,7 +30,7 @@ export const Header = () => {
             <NavbarItem url={ROUTES.ABOUT_PAGE} title='About' Icon={FcAbout} />
           </li>
           <li>
-            <NavbarItem url={ROUTES.MAIN_PAGE} title='Catalog' Icon={CiShop} />
+            <NavbarItem url={ROUTES.CATALOG_PAGE} title='Catalog' Icon={CiShop} />
           </li>
           <li>
             <NavbarItem url={ROUTES.CONTACTS_PAGE} title='Contacts' Icon={MdOutlineContactSupport} />
@@ -46,7 +45,8 @@ export const Header = () => {
         {user?.email?.length > 1 ?
           <ProfileDropdown />
           :
-          <div onClick={() => router.push('/auth')}>Login
+          <div onClick={() => router.push(ROUTES.AUTH_PAGE)}>
+            Login
           </div>
         }
       </>

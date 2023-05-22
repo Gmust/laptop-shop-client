@@ -25,7 +25,6 @@ export default function RootLayout({
     <html lang='en'>
     <body>
     <Providers>
-      <EffectorNext>
         <Toaster
           position='bottom-left'
           reverseOrder={true}
@@ -34,7 +33,6 @@ export default function RootLayout({
         <SearchBar />
         {children}
         <Footer />
-      </EffectorNext>
     </Providers>
     </body>
     </html>

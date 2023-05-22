@@ -11,6 +11,11 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  color: black;
+
+  h1 {
+    text-decoration: none;
+  }
 
   h1 {
     font-size: 30px;
@@ -64,8 +69,8 @@
 
 
 @media screen and (max-width: 700px) {
-  .logoBlock{
-    h1{
+  .logoBlock {
+    h1 {
       display: none;
     }
   }

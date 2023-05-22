@@ -1,7 +1,7 @@
 import { BrandsSlider } from '@components/elements/Sliders/BrandsSlider/BrandsSlider';
 import classes from './mainPage.module.scss';
 import { LaptopsSlider } from '@components/elements/Sliders/LaptopsSlider/LaptopsSlider';
-import { LaptopCard } from '@components/modules/LaptopCard/LaptopCard';
+import Link from 'next/link';
 
 interface MainPageProps {
   allLaptops: ILaptop[],
@@ -36,11 +36,19 @@ export const MainPage = ({ allLaptops, bestsellersLaptops, newLaptops }: MainPag
 
           <div className={classes.divider}></div>
 
-          <div>
-            <h3>All Laptops</h3>
+          <div className={classes.moreLaptops}>
+
+            <h2>Want to see more laptops?</h2>
+
+            <Link href='/catalog'>
+              <button>
+                Search more
+              </button>
+            </Link>
+            {/* <h3>All Laptops</h3>
             <div className={classes.allLaptops}>
               {allLaptops.map(laptop => <LaptopCard key={laptop.id} {...laptop} />)}
-            </div>
+            </div>*/}
           </div>
         </div>
       </div>

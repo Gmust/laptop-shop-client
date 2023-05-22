@@ -13,10 +13,10 @@
     margin-bottom: 5px;
   }
 
-    h3 {
-      font-size: 24px;
-      margin-top: 5px;
-    }
+  h3 {
+    font-size: 24px;
+    margin-top: 5px;
+  }
 
 }
 
@@ -32,4 +32,30 @@
   opacity: 0.6;
   border-radius: 6px;
   padding: 2px;
+}
+
+
+.moreLaptops {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid black;
+    background: inherit;
+    padding: 10px;
+    margin: 6px;
+    font-size: 20px;
+    font-weight: bold;
+    transition-duration: 200ms;
+
+    &:hover {
+      transform: scale(1.1);
+
+    }
+
+  }
 }

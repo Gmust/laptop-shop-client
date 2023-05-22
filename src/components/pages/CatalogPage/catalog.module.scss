@@ -1,0 +1,20 @@
+
+.catalogWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogBottom {
+  display: flex;
+  background-color: #fff;
+  margin: 20px;
+}
+
+.filtersList {
+
+}
+
+.catalogList {
+  display: flex;
+  flex-wrap: wrap;
+}
