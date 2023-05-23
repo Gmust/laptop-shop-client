@@ -19,8 +19,9 @@ export const LaptopCard = (laptop: ILaptop) => {
       <span className={classes.vendorCode}>Vendor code:{laptop.vendor_code}</span>
       <div className={classes.cardFooter}>
         <span className={classes.price}>Price: {laptop.price}$</span>
-        {isInShoppingCart ?
-          <BsCartPlus className={classes.cartBtnStyle} onClick={()=> {} } />
+        {!isInShoppingCart ?
+          <BsCartPlus className={classes.cartBtnStyle} onClick={() => {
+          }} />
           :
           <BsCartCheck className={classes.cartCheckedBtnStyle} />
         }

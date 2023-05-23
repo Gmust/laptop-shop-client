@@ -7,6 +7,7 @@ import { LaptopCard } from '@components/modules/LaptopCard/LaptopCard';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import classes from './catalog.module.scss';
+import { Paginator } from '@components/pages/CatalogPage/Paginator/Paginator';
 
 export const Catalog = ({ rows, count }: ILaptopsResponse) => {
 
@@ -31,22 +32,27 @@ export const Catalog = ({ rows, count }: ILaptopsResponse) => {
       </AnimatePresence>
 
       <div className={classes.catalogBottom}>
-        <div className={classes.filtersList}>
-          Filters
+        <div className={classes.catalogTopWrapper}>
+          <div className={classes.filtersList}>
+            Filters
+          </div>
+
+          <ul className={classes.catalogList}>
+            {laptopsToRender.length > 0 ? laptopsToRender.map((laptop) =>
+                <li key={laptop.id}>
+                  <LaptopCard {...laptop} />
+                </li>
+              )
+              :
+              <div>
+                Laptop list is empty...
+              </div>
+            }
+          </ul>
         </div>
 
-        <ul className={classes.catalogList}>
-          {laptopsToRender.length > 0 ? laptopsToRender.map((laptop) =>
-              <li key={laptop.id}>
-                <LaptopCard {...laptop} />
-              </li>
-            )
-            :
-            <div>
-              Laptop list is empty...
-            </div>
-          }
-        </ul>
+        <Paginator count={count} />
+
       </div>
 
     </div>

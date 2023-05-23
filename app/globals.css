@@ -74,3 +74,8 @@ table {
 body {
     font-family: Roboto, sans-serif;
 }
+
+
+.selected a{
+    background: orange;
+}
