@@ -8,11 +8,11 @@ import { Button } from '@components/elements/Buttons/Btn1/Button';
 import { useRouter } from 'next/navigation';
 import { FilterSelect } from '@components/elements/Inputs/FiltersSelect/FilterSelect';
 
-export const ManufacturersBlock = () => {
+
+export const ManufacturersBlock = ({ laptops }: { laptops: ILaptop[] }) => {
 
   const manufacturers = $manufacturers.getState();
   const router = useRouter();
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -27,7 +27,7 @@ export const ManufacturersBlock = () => {
       }}>test
       </button>
       <div className={classes.laptopsManufacturerFilter}>
-        {manufacturers ? manufacturers.map((name: string) => <FilterItem label={name} />)
+        {manufacturers ? manufacturers.map(({ name, index }: any) => <FilterItem key={index} label={name} />)
           : null}
       </div>
       <div className={classes.filterBlockControls}>
@@ -35,7 +35,7 @@ export const ManufacturersBlock = () => {
           clearFilters();
           router.refresh();
         }}>Clear all filter</Button>
-        <FilterSelect />
+        <FilterSelect laptops={laptops} />
       </div>
     </motion.div>
   );

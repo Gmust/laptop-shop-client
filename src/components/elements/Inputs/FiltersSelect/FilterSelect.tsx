@@ -1,19 +1,64 @@
 'use client';
 
 import Select from 'react-select';
-import { useState } from 'react';
-import { SelectOptionType } from '@/types/common';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { IOption, SelectOptionType } from '@/types/common';
 import { optionStyles } from '@components/elements/Inputs/SearchInput/inputStyle';
 import { createSelectOption } from '@utils/functions';
+import { setCheapLaptopsFirst, setExpensiveLaptopsFirst } from '@/context/laptops';
 import { categoryOptions } from '@utils/functions/selectContent';
+import useQueryParams from '@hooks/useQueryParams';
 import { controlStyles, menuStyles, selectStyles } from './select';
 
-export const FilterSelect = () => {
+export const FilterSelect = ({ laptops }: { laptops: ILaptop[] }) => {
 
+  const router = useRouter();
   const [categoryOption, setCategoryOption] = useState<SelectOptionType>(null);
+  const { setQueryParams, queryParams } = useQueryParams();
+
+  const updateRouteParams = (first: string) => {
+    setQueryParams({ first: first });
+  };
+
+  useEffect(() => {
+    switch (queryParams.first) {
+      case 'cheap': {
+        setCheapLaptopsFirst(laptops);
+        updateCategoryOption('Cheap at first');
+        router.refresh();
+        break;
+      }
+      case 'expensive': {
+        setExpensiveLaptopsFirst(laptops);
+        updateCategoryOption('Expensive at first');
+        router.refresh();
+        break;
+      }
+    }
+  }, []);
 
   const handleCategoryOptionChange = (selectedOption: SelectOptionType) => {
-    setCategoryOption(categoryOption);
+    setCategoryOption(selectedOption);
+    switch ((selectedOption as IOption).value) {
+      case 'Cheap at first': {
+        setCheapLaptopsFirst(laptops);
+        updateRouteParams('cheap');
+        router.refresh();
+        break;
+      }
+      case 'Expensive at first': {
+        setExpensiveLaptopsFirst(laptops);
+        updateRouteParams('expensive');
+        router.refresh();
+        break;
+      }
+    }
+  };
+
+  const updateCategoryOption = (value: string) => {
+    setCategoryOption({ value, label: value });
+    console.log(categoryOption);
   };
 
   return (

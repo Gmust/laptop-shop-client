@@ -5,16 +5,19 @@
 }
 
 .catalogBottom {
-  display: flex;
   background-color: #fff;
   margin: 20px;
-}
-
-.filtersList {
-
+  display: grid;
+  grid-template-columns: 10% 90%;
 }
 
 .catalogList {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  padding: 10px;
+}
+
+.filtersList {
+  width: 360px;
 }

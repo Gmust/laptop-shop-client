@@ -2,11 +2,11 @@
 
 import { ManufacturersBlock } from '@components/pages/CatalogPage/ManufacturersBlock/ManufacturersBlock';
 import { AnimatePresence } from 'framer-motion';
-import classes from './catalog.module.scss';
 import { $laptops } from '@/context/laptops';
 import { LaptopCard } from '@components/modules/LaptopCard/LaptopCard';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import classes from './catalog.module.scss';
 
 export const Catalog = ({ rows, count }: ILaptopsResponse) => {
 
@@ -27,11 +27,11 @@ export const Catalog = ({ rows, count }: ILaptopsResponse) => {
       <h2>Catalog</h2>
 
       <AnimatePresence>
-        <ManufacturersBlock />
+        <ManufacturersBlock laptops={laptopsToRender} />
       </AnimatePresence>
 
       <div className={classes.catalogBottom}>
-        <div>
+        <div className={classes.filtersList}>
           Filters
         </div>
 

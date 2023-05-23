@@ -7,18 +7,22 @@
   margin: 10px;
   border: 1px solid darkgray;
   width: 250px;
+  height: 280px;
   border-radius: 6px;
   color: black;
   text-decoration: none;
   box-shadow: 0px 0px 14px -6px rgba(66, 68, 90, 1);
-  transition-duration: 200ms ;
+  transition-duration: 200ms;
 
   h4 {
     font-size: 24px;
     font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  &:hover{
+  &:hover {
     transform: scale(1.1);
   }
 }
@@ -35,5 +39,33 @@
   font-weight: normal;
 }
 
-.image{
+.image {
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartBtnStyle {
+  color: orange;
+  font-size: 1.5em;
+  transition-duration: 200ms;
+
+  &:hover {
+    color: green;
+    transform: scale(1.1);
+  }
+}
+
+.cartCheckedBtnStyle {
+  color: green;
+  font-size: 1.5em;
+  transition-duration: 200ms;
+
+  &:hover {
+    color: red;
+    transform: scale(1.1);
+  }
 }
