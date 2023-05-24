@@ -1,18 +1,19 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { $manufacturers, clearFilters, setManufacturersFilter } from '@/context/filter';
-import classes from './manufacturersBlock.module.scss';
-import { FilterItem } from '@components/elements/misc/FilterItem/FilterItem';
-import { Button } from '@components/elements/Buttons/Btn1/Button';
 import { useRouter } from 'next/navigation';
+import { $manufacturers, clearFilters } from '@/context/filter';
+import { Button } from '@components/elements/Buttons/Btn1/Button';
 import { FilterSelect } from '@components/elements/Inputs/FiltersSelect/FilterSelect';
+import { FilterItem } from '@components/elements/misc/FilterItem/FilterItem';
+import classes from './manufacturersBlock.module.scss';
 
 
 export const ManufacturersBlock = ({ laptops }: { laptops: ILaptop[] }) => {
 
-  const manufacturers = $manufacturers.getState();
   const router = useRouter();
+  const manufacturers = $manufacturers.getState();
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,14 +22,10 @@ export const ManufacturersBlock = ({ laptops }: { laptops: ILaptop[] }) => {
       className={classes.manufacturersBlock}
     >
       <h3>Laptops manufacturers:</h3>
-      <button onClick={() => {
-        setManufacturersFilter('test');
-        router.refresh();
-      }}>test
-      </button>
       <div className={classes.laptopsManufacturerFilter}>
-        {manufacturers ? manufacturers.map(({ name, index }: any) => <FilterItem key={index} label={name} />)
-          : null}
+        {manufacturers && manufacturers.map(({ id, title, checked }: any) => (
+          checked && <FilterItem key={id} label={title} />
+        ))}
       </div>
       <div className={classes.filterBlockControls}>
         <Button func={() => {

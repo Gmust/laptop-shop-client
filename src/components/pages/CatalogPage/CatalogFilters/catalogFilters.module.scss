@@ -1,0 +1,18 @@
+
+.catalogFiltersWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  h3 {
+    font-size: 35px;
+  }
+}
+
+.divider {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-top: 2px solid #5E5E5E;
+  opacity: 0.8;
+}

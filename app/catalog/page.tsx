@@ -10,7 +10,9 @@ const CatalogPage = async () => {
   const manufacturerScope = fork();
   const laptopScope = fork();
 
+  // @ts-ignore
   await allSettled(setManufacturersFilter, { scope: manufacturerScope });
+  // @ts-ignore
   await allSettled(setLaptops, { scope: laptopScope });
 
   const val1 = serialize(manufacturerScope);

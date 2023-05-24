@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import classes from './catalog.module.scss';
 import { Paginator } from '@components/pages/CatalogPage/Paginator/Paginator';
+import { CatalogFilters } from '@components/pages/CatalogPage/CatalogFilters/CatalogFilters';
 
 export const Catalog = ({ rows, count }: ILaptopsResponse) => {
 
@@ -25,8 +26,6 @@ export const Catalog = ({ rows, count }: ILaptopsResponse) => {
 
   return (
     <div className={classes.catalogWrapper}>
-      <h2>Catalog</h2>
-
       <AnimatePresence>
         <ManufacturersBlock laptops={laptopsToRender} />
       </AnimatePresence>
@@ -34,7 +33,7 @@ export const Catalog = ({ rows, count }: ILaptopsResponse) => {
       <div className={classes.catalogBottom}>
         <div className={classes.catalogTopWrapper}>
           <div className={classes.filtersList}>
-            Filters
+            <CatalogFilters />
           </div>
 
           <ul className={classes.catalogList}>

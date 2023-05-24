@@ -58,7 +58,6 @@ export const FilterSelect = ({ laptops }: { laptops: ILaptop[] }) => {
 
   const updateCategoryOption = (value: string) => {
     setCategoryOption({ value, label: value });
-    console.log(categoryOption);
   };
 
   return (

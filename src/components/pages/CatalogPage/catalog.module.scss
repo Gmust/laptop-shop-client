@@ -5,25 +5,27 @@
 }
 
 .catalogBottom {
-  background-color: #fff;
   margin: 20px;
   display: flex;
   flex-direction: column;
 }
 
 .catalogList {
+  border-radius: 4px;
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px;
+  margin-left: 20px;
 }
 
 .filtersList {
-  width: 960px;
+  background-color: #fff;
+  border-radius: 4px;
 }
 
 .catalogTopWrapper {
   display: flex;
-  justify-content: space-between;
 }
 
