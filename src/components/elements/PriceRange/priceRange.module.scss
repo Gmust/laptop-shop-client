@@ -1,0 +1,36 @@
+
+.priceRange {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+
+  input {
+    padding: 10px;
+    border: none;
+    background: inherit;
+    text-align: center;
+    width: 55px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  span {
+    position: absolute;
+    margin-left: 68px;
+    width: 14px;
+    border-top: 3px solid gray;
+  }
+}

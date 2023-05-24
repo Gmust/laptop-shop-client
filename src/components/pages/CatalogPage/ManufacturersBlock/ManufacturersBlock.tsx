@@ -24,7 +24,7 @@ export const ManufacturersBlock = ({ laptops }: { laptops: ILaptop[] }) => {
       <h3>Laptops manufacturers:</h3>
       <div className={classes.laptopsManufacturerFilter}>
         {manufacturers && manufacturers.map(({ id, title, checked }: any) => (
-          checked && <FilterItem key={id} label={title} />
+          checked && <FilterItem key={id} label={title} id={id}  checked={checked}/>
         ))}
       </div>
       <div className={classes.filterBlockControls}>

@@ -1,24 +1,22 @@
 'use state';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
-import { IFilterManufacturerAccordionProps } from '@/types/catalog';
 import classes from './accordion.module.scss';
-import { FilterCheckboxItem } from '@components/elements/Accordion/FilterCheckboxItem/FilterCheckboxItem';
 
+
+interface AccordionProps {
+  children: React.ReactNode,
+  title: string
+}
 
 export const Accordion = ({
-                            setManufacturer,
-                            updateManufacturer,
-                            manufacturersList,
+                            children,
                             title
-                          }: IFilterManufacturerAccordionProps) => {
+                          }: AccordionProps) => {
 
   const [isActive, setIsActive] = useState<boolean>(false);
 
-  const selectAll = () => {
-    setManufacturer(manufacturersList.map(item => ({ ...item, checked: true })));
-  };
 
   return (
     <div className={classes.accordionWrapper}>
@@ -40,13 +38,7 @@ export const Accordion = ({
             }}
             transition={{ duration: 1, ease: [0.40, 0.62, 0.23, 1] }}
             className={classes.accordionBottom}>
-            <button onClick={selectAll} >Select All</button>
-            <div>
-              {manufacturersList.map((manuf) =>
-                <FilterCheckboxItem id={manuf.id} title={manuf.title} checked={manuf.checked}
-                                    event={updateManufacturer} key={manuf.id} />
-              )}
-            </div>
+            {children}
           </motion.div>
         }
       </AnimatePresence>
