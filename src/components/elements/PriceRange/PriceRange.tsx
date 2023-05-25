@@ -8,14 +8,16 @@ const MAX = 1000000;
 interface PriceRangeProps {
   priceRange: number[],
   setPriceRange: (arg0: number[]) => void,
-  setIsPriceChanged: (arg0: boolean) => void
+  setIsPriceChanged: (arg0: boolean) => void,
+  applyFilters: () => void
 }
 
-export const PriceRange = ({ setPriceRange, priceRange, setIsPriceChanged }: PriceRangeProps) => {
+export const PriceRange = ({ setPriceRange, priceRange, setIsPriceChanged, applyFilters }: PriceRangeProps) => {
 
   const handleChangePrice = (values: number[]) => {
     setIsPriceChanged(true);
     setPriceRange(values);
+    applyFilters();
   };
 
   return (

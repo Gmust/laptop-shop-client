@@ -4,7 +4,7 @@ import { getLaptopsBy } from '@/sevices/api/laptops';
 
 const Home = async () => {
 
-  const allLaptops = await getAllLaptopsFx({});
+  const allLaptops = await getAllLaptopsFx({ offset: 1 });
   const newLaptops = await getLaptopsBy({ url: '/new' });
   const bestsellersLaptops = await getLaptopsBy({ url: '/bestSellers' });
 

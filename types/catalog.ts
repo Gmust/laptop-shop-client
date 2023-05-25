@@ -11,4 +11,5 @@ export interface IFilterManufacturerAccordionProps {
   title: string | false,
   setManufacturer: Event<IFilterCheckboxItem[]>
   updateManufacturer: Event<IFilterCheckboxItem>
+  applyFilters: () => void
 }

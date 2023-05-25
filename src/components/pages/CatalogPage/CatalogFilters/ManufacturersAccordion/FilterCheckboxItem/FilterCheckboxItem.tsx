@@ -8,16 +8,19 @@ import { useRouter } from 'next/navigation';
 interface FilterCheckboxItemProps {
   id: string,
   title: string,
-  checked: boolean
-  event: Event<IFilterCheckboxItem>
+  checked: boolean,
+  event: Event<IFilterCheckboxItem>,
+  applyFilters: () => void
 }
 
-export const FilterCheckboxItem = ({ id, title, checked, event }: FilterCheckboxItemProps) => {
+export const FilterCheckboxItem = ({ id, title, checked, event, applyFilters }: FilterCheckboxItemProps) => {
 
   const router = useRouter();
 
   const handleFilterChange = () => {
     event({ checked: !checked, id } as IFilterCheckboxItem);
+    router.refresh();
+    applyFilters();
     router.refresh();
   };
 

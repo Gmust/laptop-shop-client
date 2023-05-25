@@ -6,9 +6,8 @@ const laptops = createDomain();
 
 
 export const getAllLaptopsFx = laptops.createEffect({
-  handler: async ({ limit, offset }: ILaptopsRequest) => {
-    const res = await getAllLaptops({ offset, limit });
-    // @ts-ignore
+  handler: async ({ limit, offset, query }: ILaptopsRequest & { query?: string }) => {
+    const res = await getAllLaptops({ offset, limit, query });
     setLaptops(res.rows);
     setAmount(res.count);
     return res;
@@ -39,6 +38,7 @@ export const setExpensiveLaptopsFirst = laptops.createEvent<ILaptop[]>();
 export const setAmount = laptops.createEvent<number>();
 export const setNew = laptops.createEvent<ILaptop[]>();
 export const setBestsellers = laptops.createEvent<ILaptop[]>();
+export const setFilteredLaptops = laptops.createEvent<ILaptop[]>();
 
 export const newLaptops = laptops.createStore<ILaptop[]>([])
   .on(setNew, (_, state) => state);
@@ -49,7 +49,8 @@ export const bestsellersLaptops = laptops.createStore<ILaptop[]>([])
 export const $laptops = laptops.createStore<ILaptop[]>([] as ILaptop[])
   .on(setLaptops, (_, state) => state)
   .on(setCheapLaptopsFirst, (_, state) => state.sort((a, b) => a.price - b.price))
-  .on(setExpensiveLaptopsFirst, (_, state) => state.sort((a, b) => b.price - a.price));
+  .on(setExpensiveLaptopsFirst, (_, state) => state.sort((a, b) => b.price - a.price))
+  .on(setFilteredLaptops, (_, state) => state);
 
 export const $goodsAmount = laptops.createStore<number>(0)
   .on(setAmount, (_, state) => state);

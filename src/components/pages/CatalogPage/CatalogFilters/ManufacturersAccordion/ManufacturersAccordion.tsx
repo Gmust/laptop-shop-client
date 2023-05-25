@@ -8,7 +8,8 @@ import { useRouter } from 'next/navigation';
 export const ManufacturersAccordion = ({
                                          setManufacturer,
                                          updateManufacturer,
-                                         manufacturersList
+                                         manufacturersList,
+                                         applyFilters
                                        }: IFilterManufacturerAccordionProps) => {
 
 
@@ -16,6 +17,7 @@ export const ManufacturersAccordion = ({
   const selectAll = () => {
     setManufacturer(manufacturersList.map(item => ({ ...item, checked: true })));
     router.refresh();
+    applyFilters();
   };
   return (
     <Accordion title='Manufacturers'>
@@ -23,7 +25,7 @@ export const ManufacturersAccordion = ({
       <div>
         {manufacturersList.map((manuf) =>
           <FilterCheckboxItem id={manuf.id} title={manuf.title} checked={manuf.checked}
-                              event={updateManufacturer} key={manuf.id} />
+                              event={updateManufacturer} key={manuf.id} applyFilters={applyFilters} />
         )}
       </div>
     </Accordion>

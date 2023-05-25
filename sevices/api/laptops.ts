@@ -1,11 +1,11 @@
 import instance from '@/sevices/axiosClient';
 
-export const getAllLaptops = async ({ offset = 0, limit = 20 }: ILaptopsRequest) => {
-  const { data } = await instance.get<ILaptopsResponse>(`/laptops?limit=${limit}&offset=${offset}`);
+export const getAllLaptops = async ({ offset = 1, limit = 20, query = '' }: ILaptopsRequest & { query?: string | null }) => {
+  const { data } = await instance.get<ILaptopsResponse>(`/laptops?limit=${limit}&offset=${+offset || 1}&${query}`);
   return data;
 };
 
 export const getLaptopsBy = async ({ url }: { url: string }) => {
   const { data } = await instance.get<ILaptopsResponse>(`/laptops${url}`);
-  return data
+  return data;
 };

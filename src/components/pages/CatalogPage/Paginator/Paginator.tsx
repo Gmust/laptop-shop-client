@@ -33,10 +33,10 @@ export const Paginator = ({ count }: { count: number }) => {
     nextClassName={classes.next}
     breakLabel='...'
     pageCount={count / 20}
-    forcePage={+queryParams.offset || 1}
+    forcePage={(+queryParams.offset || 1) - 1}
     onPageChange={async (e) => {
-      await getAllLaptopsFx({ offset: e.selected });
-      savePaginationParams((e.selected).toString());
+      await getAllLaptopsFx({ offset: e.selected + 1 });
+      savePaginationParams((e.selected + 1).toString());
       router.refresh();
     }}
   />;
