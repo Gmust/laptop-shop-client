@@ -6,16 +6,27 @@ import { TbTruckDelivery } from 'react-icons/tb';
 import { useRouter } from 'next/navigation';
 import { CiShop } from 'react-icons/ci';
 import ProfileDropdown from '@components/modules/Header/ProfileDropdown/ProfileDropdown';
-import { $user } from '@/context/user';
+import { $user, setUser } from '@/context/user';
 import { ROUTES } from '@utils/constants/routes';
 import { LocationBtn } from './LocationBtn/LocationBtn';
 import { NavbarItem } from './NavbarItem/NavbarItem';
 import classes from './header.module.scss';
+import { useEffect } from 'react';
+import { checkUserAuthFx } from '@/sevices/api/auth';
 
 export const Header = () => {
   const router = useRouter();
   const user = $user.getState();
+  useEffect(() => {
+    checkUser();
+  }, []);
 
+  const checkUser = async () => {
+    const data =
+      await checkUserAuthFx('/users/login-check');
+    setUser(data);
+    router.refresh();
+  };
 
   return (
     <header className={classes.header}>

@@ -4,6 +4,7 @@ import instance from '@/sevices/axiosClient';
 import { ISignIn, ISignUp } from '@/types/auth';
 import { AxiosError } from 'axios';
 import { HttpStatus } from '@utils/constants';
+import { setUser } from '@/context/user';
 
 export const signUpFx = createEffect(async ({ url, username, password, email }: ISignUp) => {
   const { data } = await instance.post(url, { username, password, email });
@@ -18,6 +19,7 @@ export const signUpFx = createEffect(async ({ url, username, password, email }: 
 
 export const signInFx = createEffect(async ({ url, username, password }: ISignIn) => {
   const { data } = await instance.post(url, { username, password });
+  setUser(data.user);
   return data;
 });
 
@@ -25,6 +27,7 @@ export const signInFx = createEffect(async ({ url, username, password }: ISignIn
 export const checkUserAuthFx = createEffect(async (url: string) => {
   try {
     const { data } = await instance.post(url);
+    setUser(data.user);
     return data;
   } catch (e) {
     const axiosError = e as AxiosError;
@@ -40,7 +43,7 @@ export const checkUserAuthFx = createEffect(async (url: string) => {
 export const logoutFx = createEffect(async (url: string) => {
   try {
     await instance.post(url);
-    toast.success('Successfully logged out!')
+    toast.success('Successfully logged out!');
   } catch (e) {
     toast.error((e as Error).message);
   }

@@ -1,0 +1,35 @@
+
+.cartItemWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItemTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartItemBottom {
+  display: flex;
+  justify-content: space-between;
+
+
+}
+
+.count {
+  display: flex;
+  align-items: center;
+}
+
+
+.removeBtn {
+  border: 1px solid red;
+  background: inherit;
+  transition-duration: 200ms;
+
+  &:hover {
+    border: none;
+    background: red;
+    color: white;
+  }
+}

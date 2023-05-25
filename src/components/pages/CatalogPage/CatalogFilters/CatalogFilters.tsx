@@ -31,7 +31,7 @@ export const CatalogFilters = () => {
       const laptopsQuery = `laptops=${encodedLaptopQuery}`;
       if (laptops.length && isPriceChanged) {
         setQueryParams({ priceQuery: priceQuery, laptopsQuery: laptopsQuery });
-        const data = await getAllLaptopsFx({ offset: 1, query: `${priceQuery}${laptopsQuery}` });
+        const data = await getAllLaptopsFx({ offset: 1, query: `${priceQuery}&${laptopsQuery}` });
         setFilteredLaptops(data.rows);
         return;
       }

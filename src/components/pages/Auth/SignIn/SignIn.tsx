@@ -5,6 +5,7 @@ import { AuthInput, SubmitInput } from '@components/elements/Inputs';
 import { signInFx } from '@/sevices/api/auth';
 import { PATTERN_MESSAGE_USERNAME, REQUIRED_MESSAGE } from '@utils/constants';
 import classes from './signIn.module.scss';
+import { setUser } from '@/context/user';
 
 
 interface ISignInForm {
@@ -22,8 +23,7 @@ export const SignIn = () => {
   });
 
   const onSubmit = async (data: ISignInForm) => {
-    try {
-      await toast.promise(signInFx({
+      const user =  await toast.promise(signInFx({
         url: '/users/login',
         password: data.password,
         username: data.username
@@ -33,10 +33,9 @@ export const SignIn = () => {
         success: 'User successfully signed in!'
       });
       reset();
-      router.push('/');
+      setUser(user.user)
       router.refresh();
-    } catch (e: any) {
-    }
+      router.push('/');
   };
 
 

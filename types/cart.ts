@@ -13,7 +13,6 @@ export interface IShoppingCartItem {
 }
 
 export interface IAddToCart {
-  url: string,
   username: string,
   laptopId: number
 }

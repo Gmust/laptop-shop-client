@@ -1,22 +1,48 @@
 'use client';
-import React, { forwardRef } from 'react';
-import { useStore } from 'effector-react';
+import React, { forwardRef, useEffect } from 'react';
 import { TiShoppingCart } from 'react-icons/ti';
 import { FiDollarSign } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IWrappedComponent, withClickOutside } from '@utils/functions';
-import { $shoppingCart } from '@/context/shopping-cart';
 import classes from './shoppingCartPopUp.module.scss';
+import { CartItem } from '@components/modules/SearchBar/shoppingCart/CartItem/CartItem';
+import { $shoppingCart, getShoppingCartFx, setShoppingCart } from '@/context/shopping-cart';
+import { $user } from '@/context/user';
+import toast from 'react-hot-toast';
 
 const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, setOpen }, ref) => {
 
-  const shoppingCart = useStore($shoppingCart);
+  const user = $user.getState();
+  const shoppingCart = $shoppingCart.getState();
   const toggleOpenDropdown = () => setOpen(!open);
   const router = useRouter();
+
+
+  useEffect(() => {
+    if (user) {
+      router.refresh();
+      loadCartItems()
+        .then(() => {
+          router.refresh();
+          loadCartItems();
+        });
+    }
+
+  }, []);
+
+  const loadCartItems = async () => {
+    try {
+      const cartItems = await getShoppingCartFx(+user.userId);
+      setShoppingCart(cartItems);
+      router.refresh();
+    } catch (e) {
+      toast.error((e as Error).message);
+    }
+  };
+
   return (
     <div className={classes.shoppingCart} ref={ref}>
-
       <button className={classes.shoppingCartBtn} onClick={toggleOpenDropdown}>
         {shoppingCart.length > 0 ?
           <div>{shoppingCart.length}</div> : null}
@@ -38,9 +64,7 @@ const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open,
                 {shoppingCart.length > 0 ?
                   <div>
                     {shoppingCart.map(item =>
-                      <li key={item.id}>
-                        {item.name}
-                      </li>
+                      <CartItem key={item.id} {...item} />
                     )}
 
                   </div>
