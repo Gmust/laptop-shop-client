@@ -72,18 +72,29 @@
   flex-direction: column;
 }
 
-.checkoutBtn {
+.btns {
   display: flex;
   justify-content: center;
 
 
-  .btn {
+  .checkoutBtn {
     font-size: 16px;
     padding: 2px;
     margin-top: 5px;
     border-radius: 10px;
     border: none;
     background: #75d315;
+    width: 80%;
+    transition-duration: 200ms;
+  }
+
+  .removeBtn{
+    font-size: 16px;
+    padding: 2px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: none;
+    background: red;
     width: 80%;
     transition-duration: 200ms;
   }
@@ -96,4 +107,9 @@
 .active:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+
+.shoppingCartList{
+  max-height: 500px;
+  overflow: auto;
 }

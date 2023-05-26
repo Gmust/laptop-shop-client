@@ -1,34 +1,64 @@
 
 .cartItemWrapper {
+  padding: 5px;
+  margin: 5px;
   display: flex;
   flex-direction: column;
+  border: 1px solid gray;
+  min-width: 250px;
 }
 
 .cartItemTop {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  color: black;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  span {
+    font-size: 20px;
+  }
+
 }
 
 .cartItemBottom {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 
-
+  span {
+    font-size: 16px;
+  }
 }
 
 .count {
   display: flex;
   align-items: center;
+
+  span {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  button {
+    border: none;
+    background: inherit;
+  }
 }
 
 
 .removeBtn {
+  padding: 5px;
+  margin: 5px;
   border: 1px solid red;
   background: inherit;
   transition-duration: 200ms;
+  cursor: pointer;
 
   &:hover {
-    border: none;
     background: red;
     color: white;
   }

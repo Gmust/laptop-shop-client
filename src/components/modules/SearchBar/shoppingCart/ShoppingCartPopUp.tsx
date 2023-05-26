@@ -5,16 +5,25 @@ import { FiDollarSign } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { IWrappedComponent, withClickOutside } from '@utils/functions';
-import classes from './shoppingCartPopUp.module.scss';
 import { CartItem } from '@components/modules/SearchBar/shoppingCart/CartItem/CartItem';
-import { $shoppingCart, getShoppingCartFx, setShoppingCart } from '@/context/shopping-cart';
+import {
+  $shoppingCart,
+  $totalPrice,
+  deleteAllFromCartFx,
+  getShoppingCartFx,
+  removeShoppingCartItem,
+  setShoppingCart,
+  setTotalPrice
+} from '@/context/shopping-cart';
 import { $user } from '@/context/user';
 import toast from 'react-hot-toast';
+import classes from './shoppingCartPopUp.module.scss';
 
 const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open, setOpen }, ref) => {
 
   const user = $user.getState();
   const shoppingCart = $shoppingCart.getState();
+  const totalPrice = $totalPrice.getState();
   const toggleOpenDropdown = () => setOpen(!open);
   const router = useRouter();
 
@@ -22,13 +31,16 @@ const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open,
   useEffect(() => {
     if (user) {
       router.refresh();
-      loadCartItems()
-        .then(() => {
-          router.refresh();
-          loadCartItems();
-        });
+      loadCartItems();
     }
+  }, [user]);
 
+  useEffect(() => {
+    setTotalPrice(
+      $shoppingCart.getState().reduce((defaultCount, item) => defaultCount + item.totalPrice, 0)
+    );
+    router.refresh();
+    console.log($shoppingCart.getState());
   }, []);
 
   const loadCartItems = async () => {
@@ -60,13 +72,12 @@ const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open,
           >
             <div className={classes.shoppingCartContent}>
               <h3>Shopping cart</h3>
-              <ul>
+              <ul className={classes.shoppingCartList}>
                 {shoppingCart.length > 0 ?
                   <div>
                     {shoppingCart.map(item =>
                       <CartItem key={item.id} {...item} />
                     )}
-
                   </div>
                   :
                   <li className={classes.empty}>
@@ -77,11 +88,20 @@ const ShoppingCartPopUp = forwardRef<HTMLDivElement, IWrappedComponent>(({ open,
               <div className={classes.shoppingCartFooter}>
                 <div className={classes.total}>
                   <span>Total price:</span>
-                  <span className={classes.amount}>0<FiDollarSign /></span>
+                  <span className={classes.amount}> {totalPrice} <FiDollarSign /></span>
                 </div>
-                <div className={classes.checkoutBtn}>
+                <div className={classes.btns}>
+                  <button className={shoppingCart.length <= 0 ? `${classes.removeBtn} ${classes.disabled}`
+                    : `${classes.removeBtn} ${classes.active}`} onClick={() => {
+                    deleteAllFromCartFx(+user.userId);
+                    shoppingCart.forEach((item) => removeShoppingCartItem(item.laptopId));
+                    router.refresh();
+                  }}>
+                    Clear all cart
+                  </button>
                   <button onClick={() => router.push('/')} disabled={!shoppingCart.length}
-                          className={shoppingCart.length <= 0 ? `${classes.btn} ${classes.disabled}` : classes.active}>
+                          className={shoppingCart.length <= 0 ? `${classes.checkoutBtn} ${classes.disabled}`
+                            : `${classes.checkoutBtn} ${classes.active}`}>
                     Сheckout
                   </button>
                 </div>
