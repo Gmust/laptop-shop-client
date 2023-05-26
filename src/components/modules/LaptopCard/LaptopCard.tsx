@@ -31,7 +31,7 @@ export const LaptopCard = (laptop: ILaptop) => {
   };
 
   return (
-    <div className={classes.cardWrapper}>
+    <div className={classes.cardWrapper} onClick={() => router.push(`/catalog/${laptop.id}`)}>
       <Image src={img} alt={'image'} width={250} height={180} style={{ 'borderRadius': '10px' }}
              className={classes.image} />
       <h4>{laptop.name} {laptop.manufacturer}</h4>
@@ -39,13 +39,15 @@ export const LaptopCard = (laptop: ILaptop) => {
       <div className={classes.cardFooter}>
         <span className={classes.price}>Price: {laptop.price}$</span>
         {!isInShoppingCart ?
-          <BsCartPlus className={classes.cartBtnStyle} onClick={() => {
+          <BsCartPlus className={classes.cartBtnStyle} onClick={(e) => {
+            e.stopPropagation();
             toggleToCart();
             checkIsInShoppingCart();
             router.refresh();
           }} />
           :
-          <BsCartCheck className={classes.cartCheckedBtnStyle} onClick={() => {
+          <BsCartCheck className={classes.cartCheckedBtnStyle} onClick={(e) => {
+            e.stopPropagation();
             toggleToCart();
             checkIsInShoppingCart();
             router.refresh();

@@ -18,9 +18,18 @@ interface ILaptop {
   new: boolean;
   manufacturer: string;
   description: string;
+  technical_data: TechData[];
   images: string;
   createdAt: Date;
   updatedAt: Date;
 }
 
 
+interface TechData {
+  id: number,
+  techDataId: number,
+  title: string,
+  description: string,
+  createdAt: Date;
+  updatedAt: Date;
+}
